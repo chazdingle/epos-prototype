@@ -1,0 +1,86 @@
+/* All screen shapes, colours and coordinates are in the original inline SVG.
+   These styles handle fonts, proportional sizing and interaction only. */
+@font-face {
+  font-family: Montserrat;
+  src: url("fonts/Montserrat-SemiBold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+  font-display: block;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url("fonts/Montserrat-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: block;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { width: 100%; height: 100%; margin: 0; }
+body {
+  display: grid;
+  place-items: center;
+  background: #e8e8e8;
+  font-family: Montserrat, sans-serif;
+}
+.stage {
+  width: min(100vw, calc(100vh * 4 / 3));
+  width: min(100vw, calc(100dvh * 4 / 3));
+  aspect-ratio: 4 / 3;
+}
+#sign-on-artwork { display: block; width: 100%; height: 100%; }
+#sign-on-artwork text { font-family: Montserrat, sans-serif; }
+.ui-button {
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.ui-button:focus-visible { outline: 2px solid #263854; outline-offset: 3px; }
+#staff-search {
+  display: block;
+  width: 100%;
+  height: 33px;
+  margin: 0;
+  padding: 3px 11px;
+  border: 1px solid #707070;
+  border-radius: 9px;
+  background: #f2f2f2;
+  color: #263854;
+  font: 600 17px Montserrat, sans-serif;
+  letter-spacing: -0.05em;
+}
+#staff-search:focus-visible { outline: 2px solid #385076; outline-offset: -2px; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.demo-result {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 20px;
+  padding: 30px;
+  background: #f2f2f2;
+  color: #263854;
+  text-align: center;
+}
+.demo-result p { max-width: 600px; font-size: 25px; line-height: 1.5; }
+.demo-result button {
+  border: 1px solid #707070;
+  border-radius: 9px;
+  padding: 15px 25px;
+  background: #8ec980;
+  color: #263854;
+  font: 700 20px Montserrat, sans-serif;
+  cursor: pointer;
+}
