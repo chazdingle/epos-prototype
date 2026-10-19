@@ -8,7 +8,7 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-  <main class="stage" aria-label="Sign-on screen">
+  <main class="stage" aria-label="Krispies EPOS">
     <!-- Original XD artwork. Geometry and embedded Krispies logo retained. -->
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 768" id="sign-on-artwork" aria-label="Krispies staff sign on" role="group">
   <defs>
@@ -267,14 +267,47 @@
       <text id="pin-Sign_on_" data-name="Sign on " transform="translate(724 391)" fill="#fff" font-size="35" font-family="Montserrat-Bold, Montserrat" font-weight="700" letter-spacing="-0.05em"><tspan x="0" y="0">Sign on </tspan></text>
     </g>
   </g>
-  <foreignObject x="0" y="155" width="455" height="36" id="search-panel" hidden=""><input id="staff-search" type="search" aria-label="Search staff by name" placeholder="Start typing a name…" autocomplete="off" spellcheck="false" /></foreignObject><text id="no-matches" x="227.5" y="250" text-anchor="middle" font-size="20" font-family="Montserrat" font-weight="600" fill="#6a6a6a" hidden="">No matching staff</text></g>
+  <foreignObject x="0" y="161" width="500" height="444" id="all-staff-panel" hidden="">
+    <div class="all-staff">
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="7" fill="none" stroke="#385076" stroke-width="2.5" /><path d="M15.5 15.5 22 22" stroke="#385076" stroke-width="2.5" stroke-linecap="round" /></svg>
+        <input id="staff-search" type="search" inputmode="none" maxlength="1" aria-label="Search staff by name" placeholder="Quick search" autocomplete="off" spellcheck="false" />
+      </label>
+      <div class="all-staff-body">
+        <div id="all-staff-list" class="all-staff-list" aria-label="All staff, A to Z"></div>
+        <nav id="az-index" class="az-index" aria-label="Jump to letter"></nav>
+      </div>
+    </div>
+  </foreignObject></g>
   </g>
 </svg>
+    <!-- Welcome and home screens. Drawn over the sign-on body only, so the
+         original header bar and Krispies logo above stay visible unchanged. -->
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 768" id="session-screens" hidden tabindex="-1">
+      <g fill="#e8e8e8" stroke="#707070" stroke-width="1" transform="translate(0 73)">
+        <rect width="1024" height="695" stroke="none" />
+        <rect x="0.5" y="0.5" width="1023" height="694" fill="none" />
+      </g>
+      <g id="welcome-screen" hidden aria-label="Welcome">
+        <g fill="#5d9a64" stroke="#5d9a64" stroke-width="1">
+          <circle cx="512" cy="300" r="60" />
+        </g>
+        <text id="welcome-initials" x="512" y="318" text-anchor="middle" fill="#fff" font-size="50" font-weight="700" letter-spacing="-0.05em"></text>
+        <text id="welcome-name" x="512" y="430" text-anchor="middle" fill="#263854" font-size="57" font-weight="700" letter-spacing="-0.05em"></text>
+        <text x="512" y="478" text-anchor="middle" fill="#6a6a6a" font-size="25" font-weight="600" letter-spacing="-0.05em">Taking you to your homepage…</text>
+      </g>
+      <g id="home-screen" hidden aria-label="Home">
+        <text id="home-staff-name" x="850" y="45" text-anchor="end" fill="#fff" font-size="22" font-weight="600" letter-spacing="-0.05em"></text>
+        <g id="sign-out" transform="translate(870 15)" aria-label="Sign out" class="ui-button" role="button" tabindex="0">
+          <g fill="#385076" stroke="#fff" stroke-width="2">
+            <rect width="130" height="43" rx="9" stroke="none" />
+            <rect x="1" y="1" width="128" height="41" rx="8" fill="none" />
+          </g>
+          <text x="65" y="29" text-anchor="middle" fill="#fff" font-size="20" font-weight="700" letter-spacing="-0.05em">Sign out</text>
+        </g>
+      </g>
+    </svg>
   </main>
   <p id="status" role="status" aria-live="polite" class="sr-only"></p>
-  <div id="demo-result" class="demo-result" hidden>
-    <p id="demo-result-text"></p>
-    <button id="dismiss-result" type="button">Back to sign on</button>
-  </div>
 </body>
 </html>

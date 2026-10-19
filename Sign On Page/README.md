@@ -19,12 +19,19 @@ The screen has the original 1024 × 768 proportions. It scales uniformly to fit 
 - Physical Backspace removes one digit; Escape clears the PIN.
 - Selecting another person clears the PIN.
 - Today shows the sample rota list in your original order.
-- All Staff shows names alphabetically and reveals a search field in the existing space above the cards.
+- All Staff shows a search bar and a scrolling A–Z list of everyone, grouped under letter headings, in the same card style.
+- The A–Z strip beside the list jumps to a letter. Letters with no matching staff are greyed out.
 - Search filters immediately by the start of a name, ignoring case and surrounding spaces.
+- In All Staff, an on-screen A–Z keyboard (letters in alphabetical order, plus Clear) fills the right-hand panel until a name is picked, then the PIN pad replaces it. The tablet's own keyboard is kept closed; a physical keyboard still types into the search bar.
+- The keyboard is a one-letter quick search. Tapping a letter shows only the names starting with it, highlights that letter and greys out all the others. Tapping the letter again, or Clear, brings the other letters back.
+- Letters no name starts with are greyed out and can't be tapped (Q, U and X in the example names).
+- Tapping the search bar again, or typing, clears the selected person and any PIN digits and brings the keyboard back.
+- Signing out returns to a fresh Today list.
 - Tab, Enter and Space can operate the buttons.
-- Sign on accepts any four digits and displays a demo confirmation. Sales Mode is not connected yet.
+- Sign on accepts any four digits, flashes a welcome message with the staff member's name for 0.3 seconds, then moves to a blank homepage. Tapping or pressing any key skips it.
+- The homepage keeps the original navy header and Krispies logo, and shows the signed-on name and a Sign out button. Sign out returns to the sign-on screen.
 
-All Staff's search field was added because it was requested; it is not present in the supplied SVGs. The Today and selected-person screens preserve those exports.
+All Staff's search bar, A–Z list, jump strip and on-screen keyboard were added because they were requested; they are not present in the supplied SVGs. The Today and selected-person screens preserve those exports.
 
 ## Edit staff once
 
@@ -34,7 +41,7 @@ Open `app.js`. The `STAFF` array at the top controls every name card. Change the
 { id: "charlie", name: "Charlie", initials: "CB", today: true }
 ```
 
-`today: true` includes someone in Today. `today: false` includes them only in All Staff. These are manual sample values, not connected to a live rota. If more than six staff match, page controls appear below the cards; you can still search directly for a name.
+`today: true` includes someone in Today. `today: false` includes them only in All Staff. These are manual sample values, not connected to a live rota. The list includes example names for show; delete any you don't need. If more than six staff are on Today, page controls appear below the cards.
 
 The optional `initialsX`, `initialsY` and `initialsSize` properties preserve the individual text positioning from your XD export. You can leave them out for new names.
 
@@ -46,7 +53,9 @@ The optional `initialsX`, `initialsY` and `initialsSize` properties preserve the
 
 ## Connect Sales Mode later
 
-The Sign on button dispatches `epos:signon` with `staffId` and `name`. No PIN is included. Add an event listener and call `event.preventDefault()` to replace the temporary demo confirmation with your next screen.
+The Sign on button dispatches `epos:signon` with `staffId` and `name`. No PIN is included. Add an event listener and call `event.preventDefault()` to replace the welcome message and blank homepage with your next screen.
+
+The welcome and home screens are the `session-screens` SVG in `index.html`. It draws over the grey body only, so the original header artwork stays visible. Change `WELCOME_MS` in `app.js` to change how long the welcome shows.
 
 ## Demo limits
 
